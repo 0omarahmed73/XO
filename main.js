@@ -39,7 +39,7 @@ tiles.forEach(el => {
       if (checkWinner() !== undefined){
         announcer.classList.remove('hide');
         if (checkWinner() === 'Draw'){
-          announcer.innerHTML = `No one is won , the result is <span class="display-player">${checkWinner()}</span>`
+          announcer.innerHTML = `No one has won , the result is <span class="display-player">${checkWinner()}</span>`
         }
         else {
           announcer.innerHTML = `Player <span class="display-player player${checkWinner()}">${checkWinner()}</span> is the <span class='winner'>Winner</span>`
