@@ -24,6 +24,8 @@ playButton.addEventListener('click' , function(){
   playerDisplay.classList.remove('hide');
 })
 
+
+let i = 0;
 tiles.forEach(el => {
   el.addEventListener('click' , function(e){
     if (el.innerHTML === '') {
@@ -33,7 +35,8 @@ tiles.forEach(el => {
       console.log(board)
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       playerDisplay.innerHTML = `Player <span class="display-player player${currentPlayer}">${currentPlayer}</span>'s Turn`
-      if (checkWinner() !== undefined ){
+      i++;
+      if (checkWinner() !== undefined){
         announcer.classList.remove('hide');
         if (checkWinner() === 'Draw'){
           announcer.innerHTML = `No one is won , the result is <span class="display-player">${checkWinner()}</span>`
@@ -54,7 +57,7 @@ function checkWinner(){
   let b = '';
   let c = '';
   console.log('##########');
-  for (let i = 0 ; i < winnerConditions.length ; i++){
+  for (let i = 0 ; i <= winnerConditions.length - 1 ; i++){
     a = winnerConditions[i][0];
     console.log('#' + i + 'a');
     console.log(board[a])
@@ -68,10 +71,12 @@ function checkWinner(){
       continue;
     }
     else if (board[a] === board[b] && board[b] === board[c]){
-        return board[a];
+        winner = board[a];
+        return winner;
     }
-    else if (!board.includes('') && board[a] !== board[b] || board[b] !== board[c] || board[a] !== board[c] && i === winnerConditions.length - 1) {
-      return 'Draw';
+    else if ((!board.includes('') &&  i === 7 ) && (board[a] !== board[b] || board[b] !== board[c])) {
+      winner = 'Draw';
+      return winner;
     }
   }
 
