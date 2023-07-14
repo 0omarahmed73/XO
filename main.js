@@ -57,7 +57,7 @@ function checkWinner(){
   let b = '';
   let c = '';
   console.log('##########');
-  for (let i = 0 ; i <= winnerConditions.length ; i++){
+  for (let i = 0 ; i < winnerConditions.length ; i++){
     a = winnerConditions[i][0];
     console.log('#' + i + 'a');
     console.log(board[a])
