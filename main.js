@@ -31,14 +31,20 @@ tiles.forEach(el => {
     if (el.innerHTML === '') {
       el.innerHTML = `<span class="display-player player${currentPlayer}">${currentPlayer}</span>`
       board[tiles.indexOf(el)] = currentPlayer;
-      let currentPlayerOld = currentPlayer
+      // let currentPlayerOld = currentPlayer
       console.log(board)
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       playerDisplay.innerHTML = `Player <span class="display-player player${currentPlayer}">${currentPlayer}</span>'s Turn`
       i++;
       if (checkWinner() !== undefined){
         announcer.classList.remove('hide');
-        announcer.innerHTML = `Player <span class="display-player player${currentPlayerOld}">${currentPlayerOld}</span> is the <span class='winner'>Winner</span>`
+        if (checkWinner() === 'Draw'){
+          announcer.innerHTML = `No one is won , the result is <span class="display-player">${checkWinner()}</span>`
+        }
+        else {
+          announcer.innerHTML = `Player <span class="display-player player${checkWinner()}">${checkWinner()}</span> is the <span class='winner'>Winner</span>`
+
+        }
         resetButton.classList.remove('hide');
       }
     }
@@ -60,6 +66,10 @@ function checkWinner(){
     else if (board[a] === board[b] && board[b] === board[c]){
         winner = board[a];
         return winner;
+    }
+    else if (!board.includes('') && board[a] !== board[b] && board[b] !== board[c] ) {
+      winner = 'Draw';
+      return winner;
     }
   }
 
