@@ -70,7 +70,7 @@ function checkWinner(){
     else if (board[a] === board[b] && board[b] === board[c]){
         return board[a];
     }
-    else if (!board.includes('') && board[a] !== board[b] && board[b] !== board[c] && i === winnerConditions.length - 1) {
+    else if (!board.includes('') && board[a] !== board[b] && board[b] !== board[c] && i >== winnerConditions.length - 1) {
       return 'Draw';
     }
   }
