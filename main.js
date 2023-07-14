@@ -36,7 +36,7 @@ tiles.forEach(el => {
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       playerDisplay.innerHTML = `Player <span class="display-player player${currentPlayer}">${currentPlayer}</span>'s Turn`
       i++;
-      if (checkWinner() !== 'None'){
+      if (checkWinner() !== undefined ){
         announcer.classList.remove('hide');
         if (checkWinner() === 'Draw'){
           announcer.innerHTML = `No one is won , the result is <span class="display-player">${checkWinner()}</span>`
