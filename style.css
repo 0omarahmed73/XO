@@ -7,7 +7,7 @@
 
 .background {
   background-color: black;
-  min-height: calc(100vh - 30px);
+  min-height: calc(100dvh - 30px);
   display: flex;
   flex-direction: column;
   justify-content: center;
