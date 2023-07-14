@@ -24,8 +24,6 @@ playButton.addEventListener('click' , function(){
   playerDisplay.classList.remove('hide');
 })
 
-
-let i = 0;
 tiles.forEach(el => {
   el.addEventListener('click' , function(e){
     if (el.innerHTML === '') {
@@ -35,7 +33,6 @@ tiles.forEach(el => {
       console.log(board)
       currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
       playerDisplay.innerHTML = `Player <span class="display-player player${currentPlayer}">${currentPlayer}</span>'s Turn`
-      i++;
       if (checkWinner() !== undefined ){
         announcer.classList.remove('hide');
         if (checkWinner() === 'Draw'){
@@ -71,12 +68,10 @@ function checkWinner(){
       continue;
     }
     else if (board[a] === board[b] && board[b] === board[c]){
-        winner = board[a];
-        return winner;
+        return board[a];
     }
-    else if (!board.includes('') && board[a] !== board[b] && board[b] !== board[c] && i === 7 ) {
-      winner = 'Draw';
-      return winner;
+    else if (!board.includes('') && board[a] !== board[b] && board[b] !== board[c] && i === winnerConditions.length - 1) {
+      return 'Draw';
     }
   }
 
